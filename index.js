@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import path from "path"
 import 'dotenv/config'
 import './src/database/dbConnection'
+import productosRouter from './src/routes/productos.routes'
 
 //usar un puerto
 const app = express();
@@ -21,3 +22,5 @@ app.use(morgan('dev')) // Me muestra en la consola informacion extra de las soli
 app.use(express.static(path.join(__dirname, '/public'))) // Esto nos permite poder ejecutar los archivos estaticos de mi proyecto en la ruta raiz de mi backend ej: http://localhost:4000
 
 //rutas
+// http://localhost:4000/apicafe/productos
+app.use('/apicafe', productosRouter)
