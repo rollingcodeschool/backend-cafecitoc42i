@@ -12,7 +12,7 @@ const productoSchema = new Schema({
     type: Number,
     min: 2,
     max: 10000,
-    require: true,
+    required: true,
   },
   imagen: {
     type: String,
