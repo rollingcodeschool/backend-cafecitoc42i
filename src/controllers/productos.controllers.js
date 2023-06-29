@@ -1,7 +1,17 @@
 import Producto from '../models/producto';
 
-export const obtenerProductos = (req, res) => {
-  res.send('Se hizo la peticion get');
+export const obtenerProductos = async (req, res) => {
+  try{
+    //pedir a la BD la lista de productos
+    const productos = await Producto.find();
+    res.status(200).json(productos);
+  }catch(error){
+    console.log(error);
+    res.status(404).json({
+      mensaje: 'Error al buscar los productos',
+    });
+  }
+
 };
 
 export const crearProducto = async (req, res) => {
@@ -9,7 +19,7 @@ export const crearProducto = async (req, res) => {
     // console.log(req.body);
     const productoNuevo = new Producto(req.body);
     await productoNuevo.save();
-    res.status(200).json({
+    res.status(201).json({
       mensaje: 'El producto se creo correctamente',
     });
   } catch (error) {
