@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { crearProducto, obtenerProducto, obtenerProductos } from '../controllers/productos.controllers';
+import { borrarProducto, crearProducto, obtenerProducto, obtenerProductos } from '../controllers/productos.controllers';
 
 const router = Router();
 
@@ -8,5 +8,5 @@ const router = Router();
 //   })
 
 router.route('/productos').get(obtenerProductos).post(crearProducto);
-router.route('/productos/:id').get(obtenerProducto);
+router.route('/productos/:id').get(obtenerProducto).delete(borrarProducto);
 export default router;
