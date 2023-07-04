@@ -29,14 +29,7 @@ export const obtenerProducto = async (req, res) => {
 export const crearProducto = async (req, res) => {
   try {
     // validar los datos del body antes de pedir algo a la BD
-    const errors = validationResult(req);
-    //errors.isEmpty(); es true cuando no hay errores, caso contrario devuelve false
-    //si hay errores
-    if(!errors.isEmpty()){
-      return res.status(400).json({
-        errores: errors.array()
-      })
-    }
+   
 
     // console.log(req.body);
     const productoNuevo = new Producto(req.body);
@@ -68,6 +61,7 @@ export const borrarProducto = async (req, res)=>{
 
 export const editarProducto = async (req, res)=>{
   try{
+    
     await Producto.findByIdAndUpdate(req.params.id, req.body);
     res.status(200).json({
       mensaje: 'El producto fue editado correctamente',
