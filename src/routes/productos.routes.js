@@ -42,7 +42,12 @@ router
           .notEmpty()
           .withMessage('La url de la imagen es obligatoria')
           .matches(/(https?:\/\/.*\.(?:png|jpeg))/)
-          .withMessage('Debe ser una URL de imagen valida, con extension (png|jpe?g|gif|bmp) ')
+          .withMessage('Debe ser una URL de imagen valida, con extension (png|jpeg) '),
+      check('categoria')
+      .notEmpty()
+      .withMessage('La categoria es obligatoria')
+      .isIn(['bebida caliente', 'bebida fria', 'dulce', 'salado'])
+      .withMessage('Debe ingresar una categoria valida')
     ],
     crearProducto
   );
