@@ -6,7 +6,6 @@ import {
   obtenerProducto,
   obtenerProductos,
 } from "../controllers/productos.controllers";
-import { check } from "express-validator";
 import validarProducto from "../helpers/validacionProducto";
 
 const router = Router();
